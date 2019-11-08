@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { AppService } from '../app.service';
-import { IJoke } from '../IDetail.model';
+import { AppService } from '../core/services/app.service';
+import { IJoke } from '../core/models/IDetail.model';
 import { Subscription } from 'rxjs';
 
 @Component({

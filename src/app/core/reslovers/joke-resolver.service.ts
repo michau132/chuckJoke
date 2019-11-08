@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 
-import { AppService } from './app.service';
-import { IJoke } from './IDetail.model';
+import { AppService } from '../services/app.service';
+import { IJoke } from '../models/IDetail.model';
 
 @Injectable()
 export class JokeResolverService implements Resolve<IJoke> {

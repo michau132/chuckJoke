@@ -6,8 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JuniorComponent } from './junior/junior.component';
 import { SeniorComponent } from './senior/senior.component';
-import { AppService } from './app.service';
-import { JokeResolverService } from './joke-resolver.service';
+import { AppService } from './core/services/app.service';
+import { JokeResolverService } from './core/reslovers/joke-resolver.service';
 
 @NgModule({
   declarations: [

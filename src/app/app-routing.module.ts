@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { JuniorComponent } from './junior/junior.component';
 import { SeniorComponent } from './senior/senior.component';
-import { JokeResolverService } from './joke-resolver.service';
+import { JokeResolverService } from './core/reslovers/joke-resolver.service';
 
 
 const routes: Routes = [

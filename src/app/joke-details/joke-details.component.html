@@ -1,6 +1,10 @@
-<h2>Id: {{joke.id}}</h2>
-<h2>Url: {{joke.url}}</h2>
-<h2>Joke: {{joke.value}}</h2>
-<h2>Created: {{joke.created_at}}</h2>
-<h2>Updated: {{joke.updated_at}}</h2>
-<h2>Icon url: {{joke.icon_url}}</h2>
+<h2>Id: {{joke.id | uppercase}}</h2>
+<h2>Url: {{joke.url | uppercase}}</h2>
+<h2>Joke: {{joke.value | uppercase}}</h2>
+<h2>Created: {{joke.created_at | date: 'dd-MM-yyyy'}}</h2>
+<h2>Updated: {{joke.updated_at | date: 'dd-MM-yyyy'}}</h2>
+<h2>Icon url: {{joke.icon_url | uppercase}}</h2>
+<ul>
+  <h2>Categories:</h2>
+  <li *ngFor="let category of joke.categories">{{category | uppercase}}</li>
+</ul>

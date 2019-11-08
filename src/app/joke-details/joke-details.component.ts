@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
-import { switchMap } from 'rxjs/operators';
-
-import { AppService } from 'src/app/app.service';
-import { IJoke } from 'src/app/IDetail.model';
+import { IJoke } from 'src/app/core/models/IDetail.model';
 
 @Component({
   templateUrl: './joke-details.component.html',
@@ -15,15 +12,13 @@ export class JokeDetailsComponent implements OnInit {
   isLoading: boolean;
 
   constructor(
-    private route: ActivatedRoute,
-    private appService: AppService
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.route.data.subscribe(
       ({joke}: {joke: IJoke}) => {
-        this.joke = this.appService.transformProperties(joke);
-        console.log(this.joke);
+        this.joke = joke;
       },
       (err) => {
         console.log('Error', err);

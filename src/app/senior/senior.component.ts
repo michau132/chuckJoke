@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 
-import { IJoke } from '../IDetail.model';
-import { AppService } from '../app.service';
+import { IJoke } from '../core/models/IDetail.model';
+import { AppService } from '../core/services/app.service';
 
 @Component({
   templateUrl: './senior.component.html',
