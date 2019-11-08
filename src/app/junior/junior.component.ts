@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { AppService } from '../app.service';
 import { IJoke } from '../IDetail.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   templateUrl: './junior.component.html',
   styleUrls: ['./junior.component.css']
 })
-export class JuniorComponent implements OnInit {
+export class JuniorComponent implements OnInit, OnDestroy {
 
   joke: IJoke;
   isLoading: boolean;
   likedJokes: string[] = [];
+  jokeSubs: Subscription;
 
   constructor(private appService: AppService) { }
 
@@ -21,7 +23,7 @@ export class JuniorComponent implements OnInit {
 
   getAnotherJoke(): void {
     this.isLoading = true;
-    this.appService.getJoke().subscribe(
+    this.jokeSubs = this.appService.getJoke().subscribe(
       (data: IJoke) => {
         this.joke = data;
         this.isLoading = false;
@@ -35,5 +37,9 @@ export class JuniorComponent implements OnInit {
   likeJoke(joke: string): void {
     this.likedJokes = [...this.likedJokes, joke];
     this.getAnotherJoke();
+  }
+
+  ngOnDestroy(): void {
+    this.jokeSubs.unsubscribe();
   }
 }

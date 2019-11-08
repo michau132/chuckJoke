@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { Subscription } from 'rxjs';
+
 import { IJoke } from '../IDetail.model';
 import { AppService } from '../app.service';
-import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './senior.component.html',
   styleUrls: ['./senior.component.css']
 })
-export class SeniorComponent implements OnInit {
+export class SeniorComponent implements OnInit, OnDestroy {
   joke: IJoke;
   isLoading: boolean;
+  jokeSubs: Subscription;
 
   constructor(
     private appService: AppService,
@@ -22,7 +26,7 @@ export class SeniorComponent implements OnInit {
 
   getAnotherJoke(): void {
     this.isLoading = true;
-    this.appService.getJoke().subscribe(
+    this.jokeSubs = this.appService.getJoke().subscribe(
       (data: IJoke) => {
         this.joke = data;
         this.isLoading = false;
@@ -35,5 +39,9 @@ export class SeniorComponent implements OnInit {
 
   likeJoke(): void {
     this.router.navigate(['/senior/' + this.joke.id]);
+  }
+
+  ngOnDestroy(): void {
+    this.jokeSubs.unsubscribe();
   }
 }
