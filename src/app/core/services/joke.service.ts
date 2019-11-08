@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AppService {
+export class JokeService {
 
   constructor(private http: HttpClient) { }
 

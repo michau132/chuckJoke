@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 
-import { AppService } from '../services/app.service';
+import { JokeService } from '../services/joke.service';
 import { IJoke } from '../models/IDetail.model';
 
 @Injectable()
 export class JokeResolverService implements Resolve<IJoke> {
 
-  constructor(private appService: AppService) { }
+  constructor(private jokeService: JokeService) { }
 
   resolve(route: ActivatedRouteSnapshot) {
-    return this.appService.getJoke(route.paramMap.get('id'));
+    return this.jokeService.getJoke(route.paramMap.get('id'));
   }
 }

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { IJoke } from '../core/models/IDetail.model';
-import { AppService } from '../core/services/app.service';
+import { JokeService } from '../core/services/joke.service';
 
 @Component({
   templateUrl: './senior.component.html',
@@ -16,7 +16,7 @@ export class SeniorComponent implements OnInit, OnDestroy {
   jokeSubs: Subscription;
 
   constructor(
-    private appService: AppService,
+    private jokeService: JokeService,
     private router: Router
   ) { }
 
@@ -26,7 +26,7 @@ export class SeniorComponent implements OnInit, OnDestroy {
 
   getAnotherJoke(): void {
     this.isLoading = true;
-    this.jokeSubs = this.appService.getJoke().subscribe(
+    this.jokeSubs = this.jokeService.getJoke().subscribe(
       (data: IJoke) => {
         this.joke = data;
         this.isLoading = false;
