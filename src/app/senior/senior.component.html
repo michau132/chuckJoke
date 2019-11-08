@@ -1,0 +1,4 @@
+<p *ngIf="isLoading">Loading joke</p>
+<p *ngIf="!isLoading">{{ joke.value }}</p>
+<button (click)="likeJoke()" [disabled]="isLoading">Like</button>
+<button (click)="getAnotherJoke()">Skip</button>

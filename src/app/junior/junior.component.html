@@ -1,0 +1,8 @@
+<p *ngIf="isLoading">Loading joke</p>
+<p *ngIf="!isLoading">{{ joke.value }}</p>
+<button (click)="likeJoke(joke.value)" [disabled]="isLoading">Like</button>
+<button (click)="getAnotherJoke()">Skip</button>
+
+<ul>
+  <li *ngFor="let item of likedJokes; let i = index">{{i + 1}} - {{item}}</li>
+</ul>
